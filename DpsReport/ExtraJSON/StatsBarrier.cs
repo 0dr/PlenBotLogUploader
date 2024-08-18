@@ -11,6 +11,15 @@ namespace PlenBotLogUploader.DpsReport.ExtraJson
         [JsonProperty("outgoingBarrierAllies")]
         internal OutgoingBarrier[][] OutgoingBarrierAllies { get; set; }
 
+        internal long TotalBarrier
+        {
+            get
+            {
+
+                return OutgoingBarrier[0].Barrier;
+            }
+        }
+
         internal long TotalBarrierOnSquad
         {
             get

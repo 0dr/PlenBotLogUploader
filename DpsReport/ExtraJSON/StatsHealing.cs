@@ -11,6 +11,14 @@ namespace PlenBotLogUploader.DpsReport.ExtraJson
         [JsonProperty("outgoingHealingAllies")]
         internal OutgoingHealing[][] OutgoingHealingAllies { get; set; }
 
+        internal long TotalHealing 
+        {
+            get
+            {
+                
+                return OutgoingHealing[0].Healing;
+            }
+        }
         internal long TotalHealingOnSquad
         {
             get

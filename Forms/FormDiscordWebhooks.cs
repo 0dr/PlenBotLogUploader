@@ -275,8 +275,8 @@ namespace PlenBotLogUploader
                     if ((reportJSON?.ExtraJson?.Players?[0]?.StatsHealing ?? null) is not null)
                     {
                         var healingStats = reportJSON.ExtraJson.Players
-                            .Where(x => !x.FriendlyNpc && !x.NotInSquad && ((x.StatsHealing?.TotalHealingOnSquad ?? 0) > 0))
-                            .OrderByDescending(x => x.StatsHealing?.TotalHealingOnSquad ?? 0)
+                            .Where(x => !x.FriendlyNpc && !x.NotInSquad && ((x.StatsHealing?.TotalHealing ?? 0) > 0))
+                            .OrderByDescending(x => x.StatsHealing?.TotalHealing ?? 0)
                             .Take(10)
                             .ToArray();
                         var healingSummary = new TextTable(3, tableStyle, tableBorders);
@@ -292,7 +292,7 @@ namespace PlenBotLogUploader
                             rank++;
                             healingSummary.AddCell($"{rank}", tableCellCenterAlign);
                             healingSummary.AddCell($"{player.Name} ({player.ProfessionShort})");
-                            healingSummary.AddCell($"{(player.StatsHealing?.TotalHealingOnSquad ?? 0).ParseAsK()}", tableCellRightAlign);
+                            healingSummary.AddCell($"{(player.StatsHealing?.TotalHealing ?? 0).ParseAsK()}", tableCellRightAlign);
                         }
                         healingField = new DiscordApiJsonContentEmbedField()
                         {
@@ -305,8 +305,8 @@ namespace PlenBotLogUploader
                     if ((reportJSON?.ExtraJson?.Players?[0]?.StatsBarrier ?? null) is not null)
                     {
                         var barrierStats = reportJSON.ExtraJson.Players
-                            .Where(x => !x.FriendlyNpc && !x.NotInSquad && ((x.StatsBarrier?.TotalBarrierOnSquad ?? 0) > 0))
-                            .OrderByDescending(x => x.StatsBarrier?.TotalBarrierOnSquad ?? 0)
+                            .Where(x => !x.FriendlyNpc && !x.NotInSquad && ((x.StatsBarrier?.TotalBarrier ?? 0) > 0))
+                            .OrderByDescending(x => x.StatsBarrier?.TotalBarrier ?? 0)
                             .Take(10)
                             .ToArray();
                         var barrierSummary = new TextTable(3, tableStyle, tableBorders);
@@ -322,7 +322,7 @@ namespace PlenBotLogUploader
                             rank++;
                             barrierSummary.AddCell($"{rank}", tableCellCenterAlign);
                             barrierSummary.AddCell($"{player.Name} ({player.ProfessionShort})");
-                            barrierSummary.AddCell($"{(player.StatsBarrier?.TotalBarrierOnSquad ?? 0).ParseAsK()}", tableCellRightAlign);
+                            barrierSummary.AddCell($"{(player.StatsBarrier?.TotalBarrier ?? 0).ParseAsK()}", tableCellRightAlign);
                         }
                         barrierField = new DiscordApiJsonContentEmbedField()
                         {
